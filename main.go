@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math"
+	"strings"
 	"time"
 
 	"github.com/romario-giacholari/go-demo/config"
@@ -14,6 +15,13 @@ import (
 const PI = math.Pi
 
 func main() {
+	toUpper := func(str string) string {
+		return strings.ToUpper(str)
+	}
+
+	str := toUpper("awesome")
+	fmt.Println(str)
+
 	fmt.Println(PI)
 
 	environmentVariables := config.Load()
