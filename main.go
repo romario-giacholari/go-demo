@@ -50,7 +50,6 @@ func main() {
 		fmt.Println(arr[i])
 	}
 
-	// first element from arr
 	flexibleSlice := []string{"one", "two", "three"}
 	for index, value := range flexibleSlice {
 		fmt.Println(index, value)
@@ -77,4 +76,33 @@ func main() {
 	fmt.Println()
 	fmt.Printf("ok:%v type:%T", ok, ok)
 	fmt.Println()
+
+	// go routines
+	worker := func(jobs <-chan int, results chan<- int) {
+		for n := range jobs {
+			results <- n
+		}
+	}
+
+	capacity := 1000000
+	jobs := make(chan int, capacity)
+	results := make(chan int, capacity)
+	startTime := time.Now()
+
+	go worker(jobs, results)
+
+	for i := 0; i < capacity; i++ {
+		jobs <- i
+	}
+
+	close(jobs)
+
+	for j := 0; j < capacity; j++ {
+		fmt.Println(<-results)
+	}
+
+	close(results)
+
+	duration := time.Since(startTime)
+	fmt.Println("duration", duration)
 }
