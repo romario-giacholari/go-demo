@@ -24,13 +24,22 @@ func main() {
 	}
 
 	// first element from arr
-	flexibleSlice := arr[0:1]
-	fmt.Println(len(flexibleSlice))
+	flexibleSlice := []string{"one", "two", "three"}
+	for index, value := range flexibleSlice {
+		fmt.Println(index, value)
+	}
+
+	// returns new slice - it does not modify original
+	newFlexibleSlixe := append(flexibleSlice, "four")
+	fmt.Println(newFlexibleSlixe)
 
 	associative := map[string]string{
 		"foo": "bar",
 		"baz": "boo",
 	}
+
+	associative["new"] = "foobar"
+	fmt.Println(associative)
 
 	for key, value := range associative {
 		fmt.Println(key, value)
