@@ -3,16 +3,22 @@ package main
 import (
 	"fmt"
 	"log"
+	"math"
 	"time"
 
+	"github.com/romario-giacholari/go-demo/config"
 	"github.com/romario-giacholari/go-demo/entities"
 	"github.com/romario-giacholari/go-demo/utilities"
 )
 
-const ENV = "local"
+const PI = math.Pi
 
 func main() {
-	log.Println(ENV)
+	fmt.Println(PI)
+
+	environmentVariables := config.Load()
+	environment := environmentVariables["APP_ENV"]
+	log.Println(environment)
 
 	timeNow := time.Now().UTC()
 	fmt.Println(timeNow)
