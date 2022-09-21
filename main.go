@@ -2,12 +2,21 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"time"
 
 	"github.com/romario-giacholari/go-demo/entities"
 	"github.com/romario-giacholari/go-demo/utilities"
 )
 
+const ENV = "local"
+
 func main() {
+	log.Println(ENV)
+
+	timeNow := time.Now().UTC()
+	fmt.Println(timeNow)
+
 	person := entities.Person{
 		Name: "romario",
 		Age:  26,
