@@ -3,6 +3,7 @@ package entities
 type Person struct {
 	Name string
 	Age  int
+	Job  Occupation
 }
 
 func (person *Person) GetName() string {

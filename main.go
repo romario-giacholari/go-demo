@@ -34,8 +34,12 @@ func main() {
 	person := entities.Person{
 		Name: "romario",
 		Age:  26,
+		Job: entities.Occupation{
+			Title: "Software Engineer",
+		},
 	}
 
+	fmt.Println(person.Job.Title)
 	fmt.Println(utilities.Times(person.Age, 10))
 	fmt.Println(person.Name, person.Age)
 	fmt.Println(person.GetName())
